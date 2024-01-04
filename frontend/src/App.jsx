@@ -93,8 +93,8 @@ const App = () => {
             setPersons(persons.concat(response))
             showNotificationMessage(`Added ${personObject.name}`)
           })
-          .catch(() => {
-            showErrorMessage(`Failed to create: ${personObject.name}`)
+          .catch((error) => {
+            showErrorMessage(`Failed to add person: ${error.response.data.error}`)
           })
 
     setNewName('')
@@ -125,8 +125,8 @@ const App = () => {
           setPersons(persons.map(person => person.id !== originalPerson.id ? person : response))
           showNotificationMessage(`Updated ${updatedPerson.name}`)
       })
-        .catch(() => {
-          showErrorMessage(`Failed to update: ${updatedPerson.name}`)
+        .catch((error) => {
+          showErrorMessage(`Failed to update person: ${error.response.data.error}`)
       })
   }
 
